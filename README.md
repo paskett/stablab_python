@@ -34,5 +34,3 @@ python -m unittest discover -p '*_test.py'
 
 Run tests at the command line with 
 python -m unittest discover -v
-ipython nbconvert --to=html psuedospectral_example.ipynb
-ipython nbconvert --to=html 
