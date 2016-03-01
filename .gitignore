@@ -1,0 +1,10 @@
+*.DS_Store
+*.jpeg
+*.jpg
+*.png
+*.pdf
+*.mat
+
+*.mpg
+*.eps
+*.pyc
