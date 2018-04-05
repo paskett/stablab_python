@@ -1,18 +1,22 @@
 from __future__ import division
-import sys
+# Specify Path
+import sys, os
+from os.path import abspath, join, dirname
+core_dir = join(dirname(os.getcwd()),"core") 
+sys.path.insert(0,core_dir)
+sys.path.insert(0,join(core_dir,"pybvp6c"))
 
 import numpy as np
 from scipy import linalg
 import matplotlib.pyplot as plt
 
-from core.contour import semicirc2, winding_number, Evans_plot
-from core.evans import emcset, Evans_compute
-from core.bin import projection2
-
-from core.pybvp6c.bvp6c import bvp6c, bvpinit, deval
-from core.pybvp6c.structure_variable import *
-package_directory = '/Users/joshualytle/bin/projects/pystablab'
+from contour import semicirc2, winding_number, Evans_plot
+from evans import emcset, Evans_compute
+from bin import projection2
+from pybvp6c.bvp6c import bvp6c, bvpinit, deval
+from pybvp6c.structure_variable import *
 import gKdVEvansSystems as EvansSystems
+
 
 def gKdV(domain=[-5,5], verbose=True):
 	''' System Parameters '''
@@ -63,7 +67,7 @@ def gKdV(domain=[-5,5], verbose=True):
 	
 	titlestring = ('Parameters for the gKdV equation: \n '+
 					'p = ' +str(p['p'])+', I = '+str(s['I'])  )
-	filestring = (package_directory + '/gKdV/data_gKdV/'+'Parameters_'+
+	filestring = (os.getcwd() + '/data_gKdV/'+'Parameters_'+
 					str(p['p'])+'_'+str(s['I']))
 	labelstring = 'Evans Output'
 	plot_flag = False
