@@ -1,13 +1,14 @@
-import sys
-import os
+# Specify Path
+import sys, os
+from os.path import abspath, join, dirname
+core_dir = join(dirname(os.getcwd()),"core") 
+sys.path.insert(0,core_dir)
+sys.path.insert(0,join(core_dir,"pybvp6c"))
 
 import numpy as np
 import matplotlib.pyplot as plt
-
-from core.contour import semicirc2, winding_number, Evans_plot
-from core.evans import emcset, Evans_compute
-
-package_directory = '/Users/joshualytle/bin/projects/pystablab'
+from contour import semicirc2, winding_number, Evans_plot
+from evans import emcset, Evans_compute
 
 import BurgersEvansSystems as EvansSystems
 
@@ -79,7 +80,7 @@ def burgers(ul=10, ur=2, domain=[-12,12], verbose=False):
 					str(p['ul']) + "$, $u_+ = " +str(p['ur']) + '$, $I = [' +
 					str(s['L']) + ', ' + str(s['R']) + ']$'
 					)
-	filestring = (package_directory +'/Burgers/data_Burgers/'+'Parameters_'+
+	filestring = (os.getcwd() +'/data_Burgers/'+'Parameters_'+
 						str(p['ul'])+'_'+str(p['ur']))
 	labelstring = 'Evans Output'
 	format = '.pdf'

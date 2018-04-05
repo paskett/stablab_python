@@ -1,6 +1,6 @@
 import numpy as np
 from scipy import linalg
-from core.pybvp6c.bvp6c import bvp6c, bvpinit, deval
+from pybvp6c.bvp6c import bvp6c, bvpinit, deval
 
 
 def projection2(matrix,posneg,eps): 
