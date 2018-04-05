@@ -6,14 +6,20 @@ value of the parameter S (wave speed).
 continuation_boussinesq is not yet fully implemented, but will track
 the unstable eigenvalue of the Boussinesq system as S varies. 
 '''
+
+# Specify Path
+import sys, os
+from os.path import abspath, join, dirname
+core_dir = join(dirname(os.getcwd()),"core") 
+sys.path.insert(0,core_dir)
+sys.path.insert(0,join(core_dir,"pybvp6c"))
+
 import numpy as np
 import matplotlib.pyplot as plt
-
-from core.contour import semicirc2, winding_number, Evans_plot
-from core.evans import emcset, Evans_compute
-
+from contour import semicirc2, winding_number, Evans_plot
+from evans import emcset, Evans_compute
 import BoussinesqEvansSystems as EvansSystems
-package_directory = '/Users/joshualytle/bin/projects/pystablab'
+
 
 def boussinesq(p = {'S':0.04}, domain=[-10,10], verbose=True, Plot_Evans=False):
 	'''
@@ -67,7 +73,7 @@ def boussinesq(p = {'S':0.04}, domain=[-10,10], verbose=True, Plot_Evans=False):
 	
 	titlestring = ('Parameters for the Boussinesq equation: \n ' + 
 					'S = ' +str(p['S'])+', I = '+str(s['I']))
-	filestring = (package_directory + '/Boussinesq/data_Boussinesq/'+'Parameters_'+
+	filestring = (os.getcwd() + '/data_Boussinesq/'+'Parameters_'+
 					str(p['S'])+'_'+str(s['I'])        )
 	labelstring = 'Evans Output'
 	format = '.pdf'		# Possible formats: png, pdf, ps, eps and svg.
