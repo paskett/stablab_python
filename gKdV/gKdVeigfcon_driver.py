@@ -2,8 +2,6 @@ import sys
 import pickle
 
 import matplotlib.pyplot as plt
-# sys.path.append('./gKdV')
-# sys.path.append('./bin')
 # Must be imported here
 from bin import EvansBin
 from bin.EvansDF import *
