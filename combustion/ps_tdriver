@@ -1,10 +1,4 @@
-# For myself: 
-# cd bin/PwP/StablabP; python Testing/Testing_Driver
-# clear; python Testing/Testing_Driver
-
 import sys, os
-sys.path.append('/Users/joshualytle/bin/repos/pystablab')
-os.chdir('/Users/joshualytle/bin/repos/pystablab')
 from combustion.ps_comb import profilesolver,profile_F, Flinear,double_profile_F,profile_boundary_conditions
 import pickle
 import bin.EvansDF
