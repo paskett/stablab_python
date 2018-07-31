@@ -1,16 +1,5 @@
-# For myself: 
-# cd bin/PwP/StablabP; python combustion/comb_eigfcon_driver
-# clear; python combustion/comb_eigfcon_driver
-
 import sys
-# sys.path.append('/Users/joshualytle/bin/PwP/StablabP/combustion')
-# sys.path.append('/Users/joshualytle/bin/PwP/StablabP/bin')
-# sys.path.append('./combustion')
-# sys.path.append('./bin')
-# Must be imported here
-# from EvansDF import *
 
-sys.path.append('/Users/joshualytle/bin/PwP/StablabP')
 import bin.EvansDF
 np = bin.EvansDF.np
 
