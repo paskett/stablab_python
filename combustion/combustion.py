@@ -5,15 +5,11 @@ from scipy import linalg
 import numdifftools as nd
 import matplotlib.pyplot as plt
 
-# from bin.EvansDF import emcset, semicirc2, winding_number, Evans_compute
-# from bin.EvansDF import Evans_plot, eigf_init_guess
-# from bin.EvansBin import projection1, projection2, mod_drury
 from combustionEvansSystems import A
 
 from core.bin import projection1, projection2
 from core.roottracking.continuation import mod_drury
 from core.pybvp6c.bvp6c import bvp6c, bvpinit, deval, struct
-package_directory = '/Users/joshualytle/bin/projects/pystablab'
 
 def init_prof_guess(x,s,p):
 	alpha = .45
