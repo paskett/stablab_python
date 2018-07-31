@@ -1,9 +1,4 @@
-# For myself: 
-# cd bin/PwP/StablabP; python Testing/Testing_Driver
-# clear; python Testing/Testing_Driver
-
 import sys
-sys.path.append('/Users/joshualytle/bin/StabLab/StabLabP')
 from combustion.pse_comb import profilesolver
 import combustion.pse_comb as CProf_Solver
 import pickle
