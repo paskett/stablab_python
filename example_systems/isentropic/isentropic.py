@@ -14,6 +14,20 @@ def A(x, lamda, s, p):
 
     return out
 """
+"""
+def A(x, lamda, s, p):
+    gamma = p['gamma']
+    a = p['a']
+    v = stablab.soln(x,s)
+    v_prime = profile_ode(x, v, s, p)
+    alpha = a*gamma*(v**(-gamma-1)) - v_prime/(v**2)
+
+    out = np.array([[-lamda, 0, 1],
+                    [0, 0, 1],
+                    [lamda*alpha*v, lamda*v, v*(1-alpha)]],dtype=np.complex)
+
+    return out
+"""
 def A(x, lamda, s, p):
     gamma = p['gamma']
     a = p['a']
@@ -21,13 +35,12 @@ def A(x, lamda, s, p):
     v = stablab.soln(x,s)
     v_prime = profile_ode(x, v, s, p)
     v_prime_prime = (1 - a*gamma*v**(-gamma-1))*v_prime
-    alpha = a*gamma*(v**(-gamma-1)) - v_prime/(v**2)
-    A31 = (lamda*alpha*v - a*gamma*(-gamma-1)*(v**(-gamma-1))
-            + v_prime_prime/v + 2*v_prime/v**2)
+    A31 = (lamda*a*gamma*v**(-gamma) + a*gamma*(gamma+1)*v**(-gamma-1)*v_prime
+           + v_prime_prime/v - lamda*v_prime/v - 2*(v_prime**2)/(v**2) )
 
     out = v*np.array([[-lamda, 0, 1],
                     [0,0,1],
-                    [A31, lamda*v, v - alpha*v + v_prime/v]])#,dtype=np.complex)
+                    [A31, lamda*v, v - a*gamma*v**(-gamma) + 2*v_prime/v]]) #,dtype=np.complex)
     return out
 
 def Ak(x, lamda, s, p):
@@ -52,8 +65,8 @@ def profile_jacobian(v, p):
 if __name__ == "__main__":
     # parameters
     p = stablab.Struct()
-    p.gamma = 5.0/3
-    p.vp = 0.1
+    p.gamma = 5/3
+    p.vp = .001
     # dependent parameters
     p.a = -(1-p.vp)/(1-p.vp**(-p.gamma))
 
@@ -102,9 +115,9 @@ if __name__ == "__main__":
     circpnts = 30
     imagpnts = 10
     innerpts = 10
-    R = 10
+    R = 1
     spread = 2
-    zerodist = 1
+    zerodist = .0001
     preimage = stablab.semicirc2(circpnts,imagpnts,innerpts,c.ksteps,R,spread,zerodist)
 
     # compute Evans function

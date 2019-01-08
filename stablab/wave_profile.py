@@ -67,9 +67,9 @@ def profile_flux(p,s,s_old=None):
 
     # bvp solver projections
     A_min = s['Flinear'](s['UL'],p)
-    s['LM'] = scipylin.orth(projection(A_min,-1,0).T)
+    s['LM'] = scipylin.orth(projection(A_min,-1,0)) # Removed .T inside orth
     A_plus = s['Flinear'](s['UR'],p)
-    s['LP'] = scipylin.orth(projection(A_plus,1,0).T)
+    s['LP'] = scipylin.orth(projection(A_plus,1,0)) # Removed .T inside orth
 
     # This gives us the number of phase conditions needed
     s['n_phs'] = s['n']-s['LM'].shape[1]-s['LP'].shape[1]
@@ -255,7 +255,7 @@ def continuation_guess(x,s_old,s_new):
         for k in range(len(s_new['order'])):
             if j == s_new['order'][k]:
                 specify_phase = True
-                phase_index = k
+                phase_index = j # Changed to j from k
 
         # determine coefficients based on type
         vminus = s_new['UL'][j]
