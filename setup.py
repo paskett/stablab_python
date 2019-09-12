@@ -12,7 +12,7 @@ setuptools.setup(
     " a variety of numerical methods.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/nonlinear-waves/stablab_python",
+    url="https://github.com/nonlinear-waves/stablab_python/archive/v_10.tar.gz",
     packages=setuptools.find_packages(),
     classifiers=(
         "Programming Language :: Python :: 3",
