@@ -1,6 +1,6 @@
 import numpy as np
 from scipy import linalg
-from scipy.misc import comb
+from scipy.special import comb
 from scipy.integrate import complex_ode
 from itertools import combinations
 from multiprocessing import Pool
